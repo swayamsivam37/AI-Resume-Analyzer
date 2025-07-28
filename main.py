@@ -46,9 +46,9 @@ if analyze and upload_file:
         {file_content}
         please provide your analysis in a clear , structured format with specific recommendations."""
 
-        client = OpenAI(api_key=getenv("OPENAI_API_KEY"),base_url=getenv("OPENAI_API_BASE"))
+        client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"],base_url=st.secrets["OPENAI_API_BASE"])
         response = client.chat.completions.create(
-            model=getenv("OPENAI_MODEL_NAME"),
+            model=st.secrets["OPENAI_MODEL_NAME"],
             messages=[
                 {"role":"system", "content":"You are an expert resume reviewer with years of experience in HR and recruitement"},
                 {"role":"user","content":prompt}
